@@ -28,8 +28,9 @@ namespace WindowsFormsApp8
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("this is a message "+this.textBox8);
+            //Console.WriteLine("this is a message "+this.textBox8);
             connection.Open();
+            StringBuilder sb = new StringBuilder();
             if (textBox8.Text == "")
             {
 
@@ -37,7 +38,7 @@ namespace WindowsFormsApp8
                 OleDbCommand cmd = connection.CreateCommand();
                 cmd.CommandText = query1;
                 OleDbDataReader reader = cmd.ExecuteReader();
-                StringBuilder sb = new StringBuilder();
+                
                 while (reader.Read())
                 {
                     for (int i = 0; i <= 6; i++)
@@ -50,24 +51,26 @@ namespace WindowsFormsApp8
                 reader.Close();
             }
             else {
-                String query = "Select Email,Fullname,Phone,birth,type,address,registrationdate from Customer1 where email= \" " + textBox8.Text + " \" ;";
+                String query = "Select Email,Fullname,Phone,birth,type,address,registrationdate from Customer1 where email= '" + textBox8.Text + "';";
                 OleDbCommand cmd = connection.CreateCommand();
                 cmd.CommandText = query;
                 OleDbDataReader reader = cmd.ExecuteReader();
-                StringBuilder sb = new StringBuilder();
+                
                 while (reader.Read())
                 {
-                    for (int i = 0; i <= 6; i++)
+                    for (int i = 0; i < reader.FieldCount; i++)
                     {
                         sb.Append(reader.GetString(i) + " ");
 
                     }
                     sb.Append(Environment.NewLine);
                 }
-                
+                reader.Close();
+
             }
+            MessageBox.Show(sb.ToString());
             connection.Close();
-            //MessageBox.Show(sb.ToString());
+
         }
 
         private void button2_Click(object sender, EventArgs e)
