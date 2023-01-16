@@ -48,7 +48,8 @@ namespace WindowsFormsApp8
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,13 +60,13 @@ namespace WindowsFormsApp8
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(80, 50);
             this.button1.TabIndex = 0;
-            this.button1.Text = "Select All";
+            this.button1.Text = "Select";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(154, 462);
+            this.button2.Location = new System.Drawing.Point(139, 462);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(80, 50);
@@ -137,6 +138,15 @@ namespace WindowsFormsApp8
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(168, 32);
             this.textBox7.TabIndex = 8;
+            // 
+            // textBox8
+            // 
+            this.textBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox8.Location = new System.Drawing.Point(29, 552);
+            this.textBox8.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(168, 32);
+            this.textBox8.TabIndex = 9;
             // 
             // label1
             // 
@@ -212,6 +222,16 @@ namespace WindowsFormsApp8
             this.label7.TabIndex = 15;
             this.label7.Text = "Date";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(29, 529);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(48, 20);
+            this.label8.TabIndex = 15;
+            this.label8.Text = "Search";
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
@@ -222,21 +242,31 @@ namespace WindowsFormsApp8
             this.pictureBox1.TabIndex = 16;
             this.pictureBox1.TabStop = false;
             // 
-            // button3
+            // textBox8
             // 
-            this.button3.Location = new System.Drawing.Point(474, 253);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(197, 32);
-            this.button3.TabIndex = 17;
-            this.button3.Text = "Select Specific";
-            this.button3.UseVisualStyleBackColor = true;
+            this.textBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox8.Location = new System.Drawing.Point(29, 552);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(168, 26);
+            this.textBox8.TabIndex = 17;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(29, 529);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(66, 20);
+            this.label8.TabIndex = 18;
+            this.label8.Text = "Search";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1443, 862);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.textBox8);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -290,7 +320,8 @@ namespace WindowsFormsApp8
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.Label label8;
     }
 }
 

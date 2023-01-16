@@ -28,24 +28,46 @@ namespace WindowsFormsApp8
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Console.WriteLine("this is a message "+this.textBox8);
             connection.Open();
-            String query = "Select Email,Fullname,Phone,birth,type,address,registrationdate from Customer1 ";
-            OleDbCommand cmd = connection.CreateCommand();
-            cmd.CommandText = query;
-            OleDbDataReader reader = cmd.ExecuteReader();
-            StringBuilder sb = new StringBuilder();
-            while (reader.Read())
+            if (textBox8.Text == "")
             {
-                for (int i = 0; i <= 6; i++)
-                {
-                    sb.Append(reader.GetString(i) + " " );
 
+                String query1 = "Select Email,Fullname,Phone,birth,type,address,registrationdate from Customer1 ";
+                OleDbCommand cmd = connection.CreateCommand();
+                cmd.CommandText = query1;
+                OleDbDataReader reader = cmd.ExecuteReader();
+                StringBuilder sb = new StringBuilder();
+                while (reader.Read())
+                {
+                    for (int i = 0; i <= 6; i++)
+                    {
+                        sb.Append(reader.GetString(i) + " ");
+
+                    }
+                    sb.Append(Environment.NewLine);
                 }
-                sb.Append(Environment.NewLine);
+                reader.Close();
             }
-            reader.Close();
+            else {
+                String query = "Select Email,Fullname,Phone,birth,type,address,registrationdate from Customer1 where email= \" " + textBox8.Text + " \" ;";
+                OleDbCommand cmd = connection.CreateCommand();
+                cmd.CommandText = query;
+                OleDbDataReader reader = cmd.ExecuteReader();
+                StringBuilder sb = new StringBuilder();
+                while (reader.Read())
+                {
+                    for (int i = 0; i <= 6; i++)
+                    {
+                        sb.Append(reader.GetString(i) + " ");
+
+                    }
+                    sb.Append(Environment.NewLine);
+                }
+                
+            }
             connection.Close();
-            MessageBox.Show(sb.ToString());
+            //MessageBox.Show(sb.ToString());
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -61,7 +83,7 @@ namespace WindowsFormsApp8
             OleDbCommand command = connection.CreateCommand();
             String query = "Insert into Customer1([email],[fullname],[phone],[birth],[type],[address],[registrationdate]) values(@email,@fullname,@phone,@birth,@type,@address,@registrationdate)";
             command.CommandText = query;
-    
+
             /*command.Parameters[0].Value = email;
             command.Parameters[1].Value = fullname;*/
             command.Parameters.AddRange(new OleDbParameter[] {
@@ -72,7 +94,7 @@ namespace WindowsFormsApp8
             new OleDbParameter("@type",type),
             new OleDbParameter("@address",address),
             new OleDbParameter("@registrationdate",registrationdate)
-            });;
+            }); ;
             //string[] arr = {query,query2,query3,query4,query5,query6,query7};
             //string allQueries = string.Join(";", arr);
             //command.CommandText = allQueries;
@@ -95,5 +117,8 @@ namespace WindowsFormsApp8
         {
 
         }
+
+        
     }
 }
+
