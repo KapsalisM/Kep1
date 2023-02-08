@@ -49,26 +49,36 @@ namespace WindowsFormsApp8
                     sb.Append(Environment.NewLine);
                 }
                 reader.Close();
+                MessageBox.Show(sb.ToString());
             }
             else {
                 String query = "Select Email,Fullname,Phone,birth,type,address,registrationdate from Customer1 where email= '" + textBox8.Text + "';";
                 OleDbCommand cmd = connection.CreateCommand();
                 cmd.CommandText = query;
                 OleDbDataReader reader = cmd.ExecuteReader();
-                
+
                 while (reader.Read())
                 {
+                    textBox1.Text=reader.GetString(0);
+                    textBox2.Text = reader.GetString(1);
+                    textBox3.Text = reader.GetString(2);
+                    textBox4.Text = reader.GetString(3);
+                    textBox5.Text = reader.GetString(4);
+                    textBox6.Text = reader.GetString(5);
+                    textBox7.Text = reader.GetString(6);
                     for (int i = 0; i < reader.FieldCount; i++)
                     {
-                        sb.Append(reader.GetString(i) + " ");
 
-                    }
+                        //txtBoxes[i].Text=reader.GetString(1);
+                        //this.(textBox+i)=reader.GetString(i);
+                        //sb.Append(reader.GetString(i) + " ");
+                                            }
                     sb.Append(Environment.NewLine);
                 }
                 reader.Close();
 
             }
-            MessageBox.Show(sb.ToString());
+            //MessageBox.Show(sb.ToString());
             connection.Close();
 
         }
@@ -102,6 +112,13 @@ namespace WindowsFormsApp8
             //string allQueries = string.Join(";", arr);
             //command.CommandText = allQueries;
             int i = command.ExecuteNonQuery();
+            this.textBox1.Text = "";
+            this.textBox2.Text = "";
+            this.textBox3.Text = "";
+            this.textBox4.Text = "";
+            this.textBox5.Text = "";
+            this.textBox6.Text = "";
+            this.textBox7.Text = "";
             connection.Close();
             MessageBox.Show(i.ToString() + " row affected");
         }
@@ -121,7 +138,88 @@ namespace WindowsFormsApp8
 
         }
 
-        
+        private void button3_Click(object sender, EventArgs e)
+        {
+            {
+                //Console.WriteLine("this is a message "+this.textBox8);
+                connection.Open();
+                StringBuilder sb = new StringBuilder();
+                if (textBox8.Text == "")
+                {
+                    MessageBox.Show("error");
+
+                    //reader.Close();
+                }
+                else
+                {
+                    OleDbCommand command = connection.CreateCommand();
+                    OleDbCommand cmd = connection.CreateCommand();
+                    String query = "delete from Customer1 where email= '" + textBox8.Text + "';";
+
+                    cmd.CommandText = query;
+                    OleDbDataReader reader = cmd.ExecuteReader();
+
+                    /*while (reader.Read())
+                    {
+                        for (int i = 0; i < reader.FieldCount; i++)
+                        {
+                            sb.Append(reader.GetString(i) + " ");
+
+                        }
+                        sb.Append(Environment.NewLine);
+                    }
+                    reader.Close();
+            */
+                    int i = command.ExecuteNonQuery();
+                    MessageBox.Show(i.ToString() + " row affected");
+                }
+
+                connection.Close();
+                
+
+            }
+            //ToString() + " row affected");
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox3.Text.Length < 10)
+            {
+                //MessageBox.Show("invalide inputs");
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (textBox8.Text == "")
+            {
+                MessageBox.Show("You must select a person by its email");
+            }
+            else
+            {
+                connection.Open();
+                StringBuilder sb = new StringBuilder();
+
+                String query = "UPDATE Customer1 set email= '" + textBox1.Text + 
+                                                 "', Fullname='"+ textBox2.Text +
+                                                 "' where email= '" + textBox8.Text + 
+
+
+                    "';";
+                //int i = command.ExecuteNonQuery();
+                //MessageBox.Show(i.ToString() + " row affected");
+                OleDbCommand cmd = connection.CreateCommand();
+                cmd.CommandText = query;
+                int i = cmd.ExecuteNonQuery();
+                connection.Close();
+            }
+            
+        }
+
+        private void textBox8_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
